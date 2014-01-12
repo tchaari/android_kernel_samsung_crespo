@@ -381,7 +381,7 @@ static struct s3cfb_lcd r61408 = {
 					     (CONFIG_FB_S3C_NR_BUFFERS + \
 						 (CONFIG_FB_S3C_NUM_OVLY_WIN * \
 						  CONFIG_FB_S3C_NUM_BUF_OVLY_WIN)))
-#define  S5PV210_VIDEO_SAMSUNG_MEMSIZE_JPEG (916 * SZ_1K)
+#define  S5PV210_VIDEO_SAMSUNG_MEMSIZE_JPEG (4096 * SZ_1K)
 
 static struct s5p_media_device herring_media_devs[] = {
 	[0] = {
@@ -431,13 +431,13 @@ static struct s5p_media_device herring_media_devs[] = {
 #ifdef CONFIG_CPU_FREQ
 static struct s5pv210_cpufreq_voltage smdkc110_cpufreq_volt[] = {
 	{
-		.freq	= 1400000,
-		.varm	= 1420000,
-		.vint	= 1180000,
+		.freq	= 1320000,
+		.varm	= 1350000,
+		.vint	= 1100000,
 	}, {
-		.freq	= 1200000,
-		.varm	= 1320000,
-		.vint	= 1110000,
+		.freq	= 1096000,
+		.varm	= 1300000,
+		.vint	= 1150000,
 	}, {
 		.freq	= 1000000,
 		.varm	= 1275000,
@@ -712,12 +712,12 @@ static struct regulator_init_data herring_buck1_data = {
 	.constraints	= {
 		.name		= "VDD_ARM",
 		.min_uV		= 750000,
-		.max_uV		= 1600000,
+		.max_uV		= 1500000,
 		.apply_uV	= 1,
 		.valid_ops_mask	= REGULATOR_CHANGE_VOLTAGE |
 				  REGULATOR_CHANGE_STATUS,
 		.state_mem	= {
-			.uV	= 1600000,
+			.uV	= 1250000,
 			.mode	= REGULATOR_MODE_NORMAL,
 			.disabled = 1,
 		},
@@ -735,7 +735,7 @@ static struct regulator_init_data herring_buck2_data = {
 		.valid_ops_mask	= REGULATOR_CHANGE_VOLTAGE |
 				  REGULATOR_CHANGE_STATUS,
 		.state_mem	= {
-			.uV	= 1250000,
+			.uV	= 1100000,
 			.mode	= REGULATOR_MODE_NORMAL,
 			.disabled = 1,
 		},
@@ -2738,10 +2738,10 @@ static struct s3c_platform_fimc fimc_plat_lsi = {
 
 #ifdef CONFIG_VIDEO_JPEG_V2
 static struct s3c_platform_jpeg jpeg_plat __initdata = {
-	.max_main_width	= 640,
+	.max_main_width	= 800,
 	.max_main_height	= 480,
-	.max_thumb_width	= 0,
-	.max_thumb_height	= 0,
+	.max_thumb_width	= 320,
+	.max_thumb_height	= 240,
 };
 #endif
 
@@ -2810,8 +2810,8 @@ static u8 t7_config[] = {GEN_POWERCONFIG_T7,
 static u8 t8_config[] = {GEN_ACQUISITIONCONFIG_T8,
 				7, 0, 5, 0, 0, 0, 9, 35};
 static u8 t9_config[] = {TOUCH_MULTITOUCHSCREEN_T9,
-				139, 0, 0, 19, 11, 0, 32, 25, 2, 1, 10, 3, 1,
-				46, MXT224_MAX_MT_FINGERS, 5, 40, 10, 255, 3,
+				139, 0, 0, 19, 11, 0, 32, 25, 2, 1, 25, 3, 1,
+				46, MXT224_MAX_MT_FINGERS, 5, 14, 10, 255, 3,
 				255, 3, 18, 18, 10, 10, 141, 65, 143, 110, 18};
 static u8 t18_config[] = {SPT_COMCONFIG_T18,
 				0, 1};
